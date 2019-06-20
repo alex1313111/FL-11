@@ -147,7 +147,7 @@ section::before {
     color: #fff;
 }
 
-.submit-btn {
+button.submit-btn.btn-primary {
     color: lightskyblue;
     background-color: #fff;
     border-color: lightskyblue;
@@ -156,10 +156,9 @@ section::before {
     float: right;
 }
 
-.submit-btn:hover {
+button.submit-btn.btn-primary:hover {
     color: #fff;
     background-color: lightskyblue;
-    border: 2px solid lightskyblue;
 }
 
 @media print {
