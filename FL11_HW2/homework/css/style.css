@@ -122,15 +122,15 @@ section::before {
 
 .contact-form input {
     border: 2px solid #fff;
-    border-bottom: 2px solid rgb(119, 195, 248);
+    border-bottom: 2px solid lightskyblue;
 }
 
 .contact-form textarea {
-    border: 2px solid rgb(119, 195, 248);
+    border: 2px solid lightskyblue;
 }
 
 .form-control:focus {
-    border: 2px solid rgb(119, 195, 248);
+    border: 2px solid lightskyblue;
     background-color: #76cdd7;
     color: #fff;
 }
