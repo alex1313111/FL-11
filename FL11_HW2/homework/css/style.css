@@ -127,6 +127,7 @@ section::before {
 
 .contact-form textarea {
     border: 2px solid lightskyblue;
+    resize: none;
 }
 
 .form-control:focus {
