@@ -1,0 +1,198 @@
+$mainWidth: 85%;
+$mainFont: "Source Sans Pro", sans-serif;
+
+@function color($key) {
+  @if map-has-key($colors, $key) {
+    @return map-get($colors, $key);
+  }
+
+  @warn "Unknown `#{$key}` in $colors.";
+  @return null;
+}
+
+@mixin button($bg) {
+  background-color: $bg;
+  padding: 10px 45px;
+  color: #fff;
+  font-size: 1.1em;
+  font-weight: 600;
+  border-radius: 5px;
+  border: none;
+  &:hover {
+    background: darken($bg, 8%);
+    transition: all 0.3s ease;
+  }
+  &:active {
+    background: darken($bg, 25%);
+  }
+}
+
+@mixin logo {
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  img {
+    height: 55px;
+    width: 55px;
+    padding: 20px 20px 20px 0;
+  }
+  p {
+    font: 600 1.6em/1em $logoFont;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    span {
+      font: 500 0.5em $logoFont;
+    }
+  }
+}
+
+@mixin underline($width, $margin-top, $margin-left) {
+  content: "";
+  background-color: $underlineColor;
+  display: block;
+  height: 0.4em;
+  width: $width;
+  margin-top: $margin-top;
+  margin-left: $margin-left;
+}
+
+@mixin flexBlock($justify-content, $flex-direction, $align-items: center) {
+  display: flex;
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+* {
+  outline: none;
+}
+
+body {
+  @include flexBlock(space-between, column, normal);
+  background-color: color(mainBackground);
+  color: color(font);
+  font-family: $mainFont;
+  width: 100%;
+  opacity: 0.9;
+}
+.containerWidth {
+  width: $mainWidth;
+  margin: 0 auto;
+}
+.landing-logo {
+  @include logo;
+}
+.header {
+  background: $headerImg no-repeat 50% 50%;
+  border-bottom-right-radius: 30em 15em;
+  .header-wrap {
+    @include flexBlock(inherit, column, baseline);
+    @extend .containerWidth;
+    .header_heading {
+      font: 700 4.5em/1em $mainFont;
+      display: block;
+      width: 48%;
+      margin-bottom: 0.3em;
+      &::after {
+        @include underline(4.2em, -0.35em, 0);
+      }
+    }
+    .header_text {
+      font-family: $articleFont;
+      white-space: pre-line;
+      line-height: 1.5em;
+      margin-bottom: 4em;
+    }
+    .header_button {
+      @include button($buttonBg);
+      margin-bottom: 8em;
+    }
+  }
+}
+.section {
+  @include flexBlock(center, column);
+  @extend .containerWidth;
+  .section_text {
+    font: 600 3.3em/0.5em $mainFont;
+    &::after {
+      @include underline(4.4em, -0.1em, 5.2em);
+    }
+  }
+  .section_card_wrap {
+    @include flexBlock(center, row, stretch);
+    margin-bottom: 10%;
+    .section_card {
+      @include flexBlock(flex-start, column);
+      text-align: center;
+      background-color: color(sectionFooter);
+      padding: 20px;
+      margin: 10px;
+      color: white;
+      border-radius: 5px;
+      width: 33%;
+      img {
+        width: 100%;
+        height: 200px;
+        border-radius: 5px;
+      }
+      .section_card_heading {
+        font: 600 1.3em $mainFont;
+        .section_card_underline {
+          display: block;
+          height: 0.5em;
+          background-color: $underlineColor;
+          margin-top: -0.5em;
+        }
+      }
+      .section_card_text {
+        font: 400 0.9em/1.5em $articleFont;
+        color: color(sectionFont);
+      }
+    }
+  }
+}
+.section_banner {
+  background: $sectionBgGradient;
+  width: 75%;
+  @include flexBlock(space-around, row);
+  border-radius: 5px;
+  z-index: 1;
+  .section_banner_text_wrap {
+    .section_banner_heading {
+      font: 700 1.4em/0.5em $mainFont;
+      margin-bottom: 0.5em;
+      &::after {
+        @include underline(2.1em, -0.15em, 4em);
+      }
+    }
+    .section_banner_text {
+      font: 400 0.9em $articleFont;
+      color: color(sectionFont);
+      margin-bottom: 2em;
+    }
+  }
+  .section_banner_button {
+    @include button($buttonBg);
+  }
+}
+.footer {
+  background-color: color(sectionFooter);
+  color: color(sectionFont);
+  @include flexBlock(center, row);
+  padding-top: 85px;
+  padding-bottom: 20px;
+  margin-top: -55px;
+  .footer-wrap {
+    @include flexBlock(space-between, row);
+    @extend .containerWidth;
+    .footer_text {
+      font: 400 0.9em $articleFont;
+      width: 30%;
+    }
+    & > span {
+      font-size: 0.9em;
+    }
+  }
+}
