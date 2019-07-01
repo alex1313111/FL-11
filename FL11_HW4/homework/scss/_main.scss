@@ -1,0 +1,349 @@
+$mainWidth: 90%;
+$mainFont: "Open Sans", sans-serif;
+
+@function color($key) {
+  @if map-has-key($colors, $key) {
+    @return map-get($colors, $key);
+  }
+
+  @warn "Unknown `#{$key}` in $colors.";
+  @return null;
+}
+
+@mixin button($bg) {
+  background-color: $bg;
+  padding: 10px 45px;
+  color: #fff;
+  font-size: 1.1em;
+  font-weight: 600;
+  border-radius: 5px;
+  border: none;
+  &:hover {
+    background: darken($bg, 8%);
+    transition: all 0.3s ease;
+  }
+  &:active {
+    background: darken($bg, 25%);
+  }
+}
+
+@mixin flexBlock($flex-direction, $justify-content, $align-items: center) {
+  display: flex;
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+body {
+  @include flexBlock(column, space-between, normal);
+  background-color: #f3f3f3;
+  font-family: $mainFont;
+  width: 100%;
+  a,
+  button {
+    color: color(white);
+    cursor: pointer;
+  }
+  section {
+    margin-bottom: 2em;
+  }
+}
+.container {
+  width: $mainWidth;
+  margin: 0 auto;
+}
+.button {
+  border: 2px solid color(white);
+  color: color(white);
+  padding: 1.1em 5.1em;
+}
+.like {
+  font-size: 1.1em;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: block;
+  align-self: flex-end;
+  margin: 1.5em;
+  padding: 0.2em 0.6em;
+  border: 2px solid #fff;
+  text-align: center;
+  span {
+    font-size: 0.7em;
+  }
+}
+.date {
+  color: #fff;
+  font-size: 1.1em;
+  display: block;
+  align-self: flex-start;
+  margin: 1.5em;
+}
+.explore-btn {
+  padding: 5% 25%;
+  color: white;
+  font-weight: 600;
+  font-size: 1.1em;
+  border: none;
+  background-color: rgba(9, 119, 116, 0.8);
+}
+.header {
+  color: color(white);
+  background: $headerImg no-repeat 50% 50%;
+  background-size: cover;
+  height: 100vh;
+  padding: 5vh 0;
+  &::after {
+    content: "";
+    display: block;
+    background: linear-gradient(to bottom left, #000 50%, #f3f3f3 50%);
+    height: 40vh;
+    margin-top: 10vh;
+  }
+}
+.header-wrap {
+  @include flexBlock(column, space-between, normal);
+  height: 80vh;
+  .logo {
+    @include flexBlock(row, space-between);
+    .logo-text {
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+    .login-block {
+      a {
+        padding-left: 3.5vw;
+      }
+    }
+  }
+  .header-text {
+    text-align: center;
+    font-size: 3.5em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    .and {
+      font-size: 1.7em;
+      display: inline;
+    }
+    span {
+      font-size: 0.25em;
+      display: block;
+      text-transform: none;
+      letter-spacing: normal;
+    }
+  }
+  .menu {
+    @include flexBlock(row, space-around);
+  }
+}
+
+.info {
+  height: 25vh;
+  .info-block {
+    @include flexBlock(column, space-between, baseline);
+    height: 100%;
+    & > p {
+      display: block;
+      width: 50%;
+      &.right {
+        align-self: flex-end;
+        color: #fff;
+      }
+      &.left {
+        align-self: flex-start;
+        font-size: 1.2em;
+        width: 40%;
+      }
+    }
+  }
+}
+
+.articles {
+  @include flexBlock(column, space-around);
+}
+.articles-header {
+  font-size: 1.7em;
+  margin-bottom: 2em;
+}
+.articles-content {
+  @include flexBlock(column, space-around);
+}
+.content-block {
+  @include flexBlock(row, space-between, stretch);
+  margin-bottom: 2em;
+  .content-img {
+    @include flexBlock(column, space-between);
+    box-shadow: inset 0px 0px 73px rgba(0, 0, 0, 0.5);
+    width: 50%;
+    color: #fff;
+  }
+  .right-text {
+    padding-left: 10%;
+  }
+  .left-text {
+    padding-right: 10%;
+  }
+  .content-text {
+    width: 50%;
+    text-align: center;
+    p {
+      margin: 5vh 0;
+    }
+  }
+
+  & .content-img[data-name="spain"] {
+    background: map-get($articleImg, first) no-repeat;
+    background-size: cover;
+  }
+  & .content-img[data-name="france"] {
+    background: map-get($articleImg, second) no-repeat;
+    background-size: cover;
+    order: 1;
+  }
+}
+
+.explore {
+  background-color: #fff;
+  padding-top: 2em;
+  .explore-wrap {
+    @include flexBlock(column, space-around);
+    .explore-item-block {
+      @include flexBlock(row, space-between);
+      width: 100%;
+      .explore-item {
+        @include flexBlock(column, space-between);
+        height: 22em;
+        width: 22%;
+        box-shadow: inset 0px 0px 73px rgba(0, 0, 0, 0.5);
+      }
+      .explore-item:nth-of-type(2n) {
+        .explore-btn {
+          color: rgba(255, 255, 255, 0.8);
+        }
+      }
+      & .explore-item[data-name="greece"] {
+        background: map-get($exploreImg, greece) no-repeat;
+        background-size: cover;
+      }
+      & .explore-item[data-name="italy"] {
+        background: map-get($exploreImg, italy) no-repeat;
+        background-size: cover;
+      }
+      & .explore-item[data-name="usa"] {
+        background: map-get($exploreImg, usa) no-repeat;
+        background-size: cover;
+      }
+      & .explore-item[data-name="germany"] {
+        background: map-get($exploreImg, germany) no-repeat;
+        background-size: cover;
+      }
+    }
+    .explore-more {
+      margin: 4em;
+      width: inherit;
+      text-align: center;
+      .load-btn {
+        @extend .explore-btn;
+        opacity: 1;
+        padding: 1.5% 11%;
+        font-weight: 400;
+        background-color: #097774;
+      }
+    }
+  }
+}
+.subscribe {
+  .subscribe-wrap {
+    @include flexBlock(column, space-around);
+    width: 95%;
+    margin: 0 auto;
+    p {
+      font-size: 1.1em;
+      align-self: flex-start;
+      display: block;
+      margin: 1em;
+    }
+    .subscribe-block {
+      @include flexBlock(row, flex-end);
+      align-self: flex-end;
+      width: 83%;
+      span {
+        font-size: 1.5em;
+        margin-right: 1%;
+      }
+      input {
+        padding: 1%;
+        border: 1px solid #000;
+        font-size: 1.01em;
+        background-color: #f3f3f3;
+        margin-right: 1%;
+        &:focus {
+          background-color: #fff;
+        }
+
+        &::placeholder {
+          color: #000;
+          font-size: 1.01em;
+        }
+      }
+      .subscribe-btn {
+        font-size: 1.01em;
+        @extend .explore-btn;
+        opacity: 1;
+        padding: 1%;
+        font-weight: 600;
+        background-color: #097774;
+      }
+    }
+  }
+}
+.footer {
+  font-size: 1.01em;
+  background-color: #fff;
+  width: 100%;
+  padding: 2vh 0 2vh 0;
+  @include flexBlock(row, space-between);
+  .copyright {
+    color: #9e9e9e;
+  }
+  .footer-nav {
+    width: 32%;
+    ul {
+      list-style: none;
+      float: right;
+      li {
+        display: inline-block;
+
+        a {
+          display: block;
+          color: #000;
+          padding-left: 1vw;
+        }
+      }
+    }
+  }
+}
+@media (min-width: 900px) and (max-width: 1100px) {
+  .header {
+    &::after {
+      content: "";
+      display: block;
+      background: linear-gradient(to bottom left, #000 50%, #f3f3f3 50%);
+      height: 60vh;
+    }
+  }
+  .info {
+    height: 40vh;
+  }
+
+  .header-wrap {
+    height: 85vh;
+  }
+}
