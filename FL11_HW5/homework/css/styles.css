@@ -193,7 +193,7 @@ main {
   font-weight: 200;
   font-size: 3em;
   display: block;
-  width: 80%;
+  width: 83%;
 }
 
 .text>p {
@@ -279,7 +279,7 @@ footer {
 
 @media(max-width: 768px) {
   header {
-    height: 20vh;
+    height: 10vh;
     text-align: center;
   }
   .header-wrap {
@@ -294,12 +294,11 @@ footer {
     width: 90%;
   }
   .header-nav {
-    height: 5vh;
-    width: 5vh;
     order: -1;
   }
   .menu-button {
     color: #fff;
+    font-size: 1em;
     display: block;
   }
   .article-block {
