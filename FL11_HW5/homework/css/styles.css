@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   color: #fff;
@@ -43,6 +49,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding-right: 2em;
+  height: 6vh;
 }
 
 .logo {
@@ -63,8 +70,9 @@ header {
   color: #fff;
   text-decoration: none;
   cursor: pointer;
-  padding: 1em;
+  padding: 0 1em 0 1em;
   display: inline-block;
+  line-height: 6vh;
 }
 
 .header-nav>a:hover {
@@ -109,7 +117,7 @@ main {
 
 .article-block>article:nth-of-type(2n)>.article-text>.text {
   text-align: right;
-  padding-right: 5vh;
+  padding-right: 2vw;
 }
 
 .article-block>article:nth-of-type(2n)>.article-text>.text>h2 {
@@ -186,14 +194,14 @@ main {
 
 .text {
   box-sizing: border-box;
-  padding-left: 5vh;
+  padding: 2vw;
 }
 
 .text>h2 {
   font-weight: 200;
   font-size: 3em;
   display: block;
-  width: 83%;
+  margin-bottom: 0.5em;
 }
 
 .text>p {
@@ -202,7 +210,7 @@ main {
 }
 
 .date {
-  width: 10%;
+  width: 20%;
   align-self: flex-start;
   text-align: center;
   color: rgba(255, 255, 255, 0.5);
@@ -268,6 +276,7 @@ footer {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  padding: 3vh 1vh;
 }
 
 .footer-wrap .design {
@@ -279,13 +288,14 @@ footer {
 
 @media(max-width: 768px) {
   header {
-    height: 10vh;
+    height: 15vh;
     text-align: center;
   }
   .header-wrap {
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     padding-right: 0;
+    height: 100%;
   }
   .header-nav>a {
     display: none;
@@ -347,6 +357,10 @@ footer {
   .blog {
     width: 40%;
   }
+  .text>h2 {
+    font-size: 2.5em;
+    width: 100%;
+  }
   .news-img {
     height: 25vh;
   }
@@ -370,10 +384,6 @@ footer {
 @media(max-width: 480px) {
   main {
     flex-direction: column;
-  }
-  .text>h2 {
-    font-size: 2.5em;
-    width: 100%;
   }
   .blog {
     width: 100%;
