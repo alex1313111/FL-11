@@ -1,10 +1,11 @@
 let a1, a2, b1, b2, c1, c2, halfX, halfY;
+let divider = 2;
 a1 = +prompt('Input A1 coordinate', '');
 a2 = +prompt('Input A2 coordinate', '');
 b1 = +prompt('Input B1 coordinate', '');
 b2 = +prompt('Input B2 coordinate', '');
 c1 = +prompt('Input C1 coordinate', '');
 c2 = +prompt('InputC21 coordinate', '');
-halfX = (a1 + b1) / 2;
-halfY = (a2 + b2) / 2;
-console.log(halfX == c1 && halfY == c2);
+halfX = (a1 + b1) / divider;
+halfY = (a2 + b2) / divider;
+console.log(halfX === c1 && halfY === c2);
