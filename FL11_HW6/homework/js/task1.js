@@ -7,6 +7,4 @@ c1 = +prompt('Input C1 coordinate', '');
 c2 = +prompt('InputC21 coordinate', '');
 halfX = (a1 + b1) / 2;
 halfY = (a2 + b2) / 2;
-if (halfX == c1 && halfY == c2) {
-    console.log('C divides AB segment by half');
-} else console.log('C doesn’t devide AB segment by half');
+console.log(halfX == c1 && halfY == c2);
