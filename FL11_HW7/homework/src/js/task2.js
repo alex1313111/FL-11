@@ -11,7 +11,6 @@ do {
 do {
     let attempts = 2, win = false, attemptsLeft = attempts + 1;
     num = Math.round(Math.random() * (maxNum - minNum) + minNum);
-    console.log(num);
     while (win === false) {
         for (let i = 0; i <= attempts; i++) {
             let messageMinMax = `Choose the roulette pocket number from ${minNum} to ${maxNum}\n`;
