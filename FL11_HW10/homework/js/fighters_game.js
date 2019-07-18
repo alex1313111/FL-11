@@ -2,7 +2,7 @@ function Fighter(obj) {
     let data = obj;
     let name = data.name;
     let damage = data.damage;
-    let hp = data.hp;
+    let hp = data.hp, maxHp = data.hp;
     let agility = data.agility;
     let wins = 0;
     let losses = 0;
@@ -40,8 +40,13 @@ function Fighter(obj) {
         console.log(`Name: ${name}, Wins: ${wins}, Losses: ${losses}`);
     }
     this.heal = function (heal) {
+        if (hp + heal <= maxHp) {
             hp += heal;
             console.log(`${name} has HP: ${hp}`);
+        } else {
+            hp = maxHp;
+            console.log(`${name} has max of HP: ${hp}`);
+        }
     }
     this.addWin = function () {
         wins += 1;
