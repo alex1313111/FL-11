@@ -1,0 +1,71 @@
+i {
+    color: #00A9EB;
+    cursor: pointer;
+}
+
+h1 {
+    color: #00A9EB;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    margin: 0 auto;
+    width: 70%;
+}
+
+.input {
+    width: 100%;
+    display: flex;
+}
+
+input[type="text"] {
+    width: 90%;
+    height: 40px;
+}
+
+input[type="checkbox"] {
+    transform: scale(1.5);
+    margin-right: 10px;
+}
+
+#add {
+    font-size: 45px;
+    color: #999;
+    margin-left: 2%;
+}
+
+.list {
+    list-style: none;
+    width: 100%;
+    padding: 0;
+}
+
+.list-item {
+    line-height: 40px;
+}
+
+.delete {
+    float: right;
+    width: 5%;
+    vertical-align: middle;
+}
+
+.line {
+    background-color: #E2F1FD;
+    width: 100%;
+    border: none;
+    height: 6px;
+    margin-top: 20px;
+}
+
+.edit, .save {
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+input[type="text"].replace-task {
+    width: 40%;
+}
