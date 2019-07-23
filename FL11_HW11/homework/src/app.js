@@ -109,8 +109,21 @@ function dragStart(e) {
     }
 }
 
+function setBorder(e) {
+    if (e.target.className === 'list-item') {
+        e.target.style.background = '#E2F1FD';
+    }
+  }
+
+  function deleteBorder(e) {
+    if (e.target.className === 'list-item') {
+        e.target.style.background = '';
+    }
+  }
+
 function dropEnd(e) {
     e.preventDefault();
+    e.target.style.background = '';
     dragged.parentNode.removeChild(dragged);
     let parent = e.target.parentNode;
     if (parent.tagName === 'UL' && e.target !== parent.lastChild && e.target.className === 'list-item') {
@@ -140,5 +153,7 @@ ul.addEventListener('drag', dragStart);
 ul.addEventListener('dragover', function (event) {
     event.preventDefault();
 });
+ul.addEventListener('dragenter',setBorder);
+ul.addEventListener('dragleave', deleteBorder);
 ul.addEventListener('drop', dropEnd);
 ul.addEventListener('mouseover', setMoveCursore);
